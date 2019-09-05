@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, timer } from 'rxjs';
+import { Subject, interval } from 'rxjs';
 
 @Component({
   selector: 'bz-subject',
@@ -11,10 +11,14 @@ export class SubjectComponent implements OnInit {
   public subject01 = new Subject<string>();
   public subject02 = new Subject<string>();
 
-  constructor() { }
+  public observerCounter01 = 0;
+
+  constructor() {
+    this.customObserver01 = this.customObserver01.bind(this);
+  }
 
   ngOnInit() {
-    this.subject_example01();
+    this.runExample();
   }
 
   public get observable01$() {
@@ -25,11 +29,38 @@ export class SubjectComponent implements OnInit {
     return this.subject02.asObservable();
   }
 
-  public subject_example01() {
-    const subjectTimer = timer(0, 5000);
-    subjectTimer.subscribe(() => {
-      console.log('timer');
+  public customObserver01(value: string) {
+    this.observerCounter01++;
+    console.log('customObserver01 => value: ', value, this.observerCounter01);
+  }
+
+  public customObserver02(value: string) {
+    console.log('customObserver02 => value: ', value);
+  }
+
+  public runExample() {
+    const currentInterval = interval(5000);
+    currentInterval.subscribe((value) => {
+      console.log(value);
+      const text = `interval: ${value}`;
+      this.subject01.next(text);
+      this.subject02.next(text);
     });
   }
 
+  public subscribeObserver01ToSubject01() {
+    this.observable01$.subscribe(this.customObserver01);
+  }
+
+  public subscribeObserver02ToSubject01() {
+    this.observable01$.subscribe(this.customObserver02);
+  }
+
+  public subscribeObserver01ToSubject02() {
+    this.observable02$.subscribe(this.customObserver01);
+  }
+
+  public subscribeObserver02ToSubject02() {
+    this.observable02$.subscribe(this.customObserver01);
+  }
 }
