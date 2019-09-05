@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
     return asyncEvent;
   }
 
-  public getNewObservable() {
+  public getNewObservable(): Observable<string> {
     return new Observable<string>(subscriber => {
       subscriber.next('next value');
       subscriber.error('error');
