@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
+import { CreateComponent } from './operators/create/create.component';
 
 const OPERATORS = [
   CombineLatestComponent,
+  CreateComponent,
 ];
 
 const SUBJECTS = [
