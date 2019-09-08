@@ -10,6 +10,11 @@ import { CreateComponent } from './operators/create/create.component';
 import { OfFromRangeComponent } from './operators/creation-operators/of-from-range/of-from-range.component';
 import { TimerIntervalFromEventComponent } from './operators/creation-operators/timer-interval-from-event/timer-interval-from-event.component';
 import { MapMaptoReduceScanComponent } from './operators/transformation-operators/map-mapto-reduce-scan/map-mapto-reduce-scan.component';
+import { ObservableObserverSubscriptionComponent } from './fundamentals/observable-observer-subscription/observable-observer-subscription.component';
+import { GroupbyPartitionToarrayComponent } from './operators/transformation-operators/groupby-partition-toarray/groupby-partition-toarray.component';
+import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
+import { AsyncSubjectComponent } from './subjects/async-subject/async-subject.component';
+import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
 
 const OPERATORS = [
   CombineLatestComponent,
@@ -28,6 +33,11 @@ const SUBJECTS = [
     OfFromRangeComponent,
     TimerIntervalFromEventComponent,
     MapMaptoReduceScanComponent,
+    ObservableObserverSubscriptionComponent,
+    GroupbyPartitionToarrayComponent,
+    BehaviorSubjectComponent,
+    AsyncSubjectComponent,
+    ReplaySubjectComponent,
   ],
   imports: [
     BrowserModule,
