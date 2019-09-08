@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, interval, Subscription } from 'rxjs';
+import { ShareUserService, IUser } from './share-user.service';
 
 @Component({
   selector: 'bz-subject',
@@ -18,7 +19,9 @@ export class SubjectComponent implements OnInit {
   private subscription01: Subscription;
   private subscription02: Subscription;
 
-  constructor() {
+  constructor(
+    private shareUserService: ShareUserService
+  ) {
     this.customObserver01 = this.customObserver01.bind(this);
     this.customObserver02 = this.customObserver02.bind(this);
   }
