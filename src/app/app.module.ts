@@ -15,6 +15,8 @@ import { GroupbyPartitionToarrayComponent } from './operators/transformation-ope
 import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
 import { AsyncSubjectComponent } from './subjects/async-subject/async-subject.component';
 import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
+import { CardComponent } from './subjects/subject/components/card/card.component';
+import { MenuComponent } from './subjects/subject/components/menu/menu.component';
 
 const OPERATORS = [
   CombineLatestComponent,
@@ -38,6 +40,8 @@ const SUBJECTS = [
     BehaviorSubjectComponent,
     AsyncSubjectComponent,
     ReplaySubjectComponent,
+    CardComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
