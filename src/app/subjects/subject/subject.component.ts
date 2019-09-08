@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, interval } from 'rxjs';
+import { Subject, interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'bz-subject',
@@ -8,13 +8,51 @@ import { Subject, interval } from 'rxjs';
 })
 export class SubjectComponent implements OnInit {
 
-  public subject = new Subject<number>();
+  private subject = new Subject<number>();
+  private observable$ = this.subject.asObservable();
 
-  public observerCounter01 = 0;
+  public customTimer = interval(3000);
+  public time01: number;
+  public time02: number;
+
+  private subscription01: Subscription;
+  private subscription02: Subscription;
 
   constructor() {
+    this.customObserver01 = this.customObserver01.bind(this);
+    this.customObserver02 = this.customObserver02.bind(this);
   }
 
   ngOnInit() {
+    this.customTimer.subscribe(time => {
+      this.subject.next(time);
+    });
   }
+
+  private customObserver01(time: number) {
+    this.time01 = time;
+  }
+
+  private customObserver02(time: number) {
+    this.time02 = time;
+  }
+
+  public subscribeCustomObserver01() {
+    this.subscription01 = this.observable$
+      .subscribe(this.customObserver01);
+  }
+
+  public subscribeCustomObserver02() {
+    this.subscription02 = this.observable$
+      .subscribe(this.customObserver02);
+  }
+
+  public unsubscribeCustomObserver01() {
+    this.subscription01.unsubscribe();
+  }
+
+  public unsubscribeCustomObserver02() {
+    this.subscription02.unsubscribe();
+  }
+
 }

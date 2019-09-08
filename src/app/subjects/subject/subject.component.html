@@ -1,23 +1,23 @@
 <p>
-  <button (click)="subscribeObserver01ToSubject01()">
-    subscribe observer 01 to subject 01
-  </button>
+  observer reactions:
 </p>
-
 <p>
-  <button (click)="subscribeObserver02ToSubject01()">
-    subscribe observer 02 to subject 01
-  </button>
+  observer 01: <b> {{ time01 }} </b>
 </p>
-
 <p>
-  <button (click)="subscribeObserver01ToSubject02()">
-    subscribe observer 01 to subject 02
-  </button>
+  observer 02: <b> {{ time02 }} </b>
 </p>
-
 <p>
-  <button (click)="subscribeObserver02ToSubject02()">
-    subscribe observer 02 to subject 02
+  <button (click)="subscribeCustomObserver01()">
+    Subscribe Observer 01
+  </button>
+  <button (click)="subscribeCustomObserver02()">
+    Subscribe Observer 02
+  </button>
+  <button (click)="unsubscribeCustomObserver01()">
+    Unsubscribe Observer 01
+  </button>
+  <button (click)="unsubscribeCustomObserver02()">
+    unsubscribe Observer 02
   </button>
 </p>
